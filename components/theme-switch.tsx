@@ -16,34 +16,30 @@ export function ThemeSwitch() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center space-x-2">
-        <div className="h-4 w-4 animate-pulse bg-muted rounded" />
-        <div className="h-5 w-9 animate-pulse bg-muted rounded-full" />
-        <div className="h-4 w-4 animate-pulse bg-muted rounded" />
+      <div className="flex items-center space-x-2 opacity-50">
+        <Sun className="h-4 w-4" />
+        <Switch disabled />
+        <Moon className="h-4 w-4" />
       </div>
     )
   }
 
   const isDark = resolvedTheme === "dark"
 
-  const handleToggle = (checked: boolean) => {
-    setTheme(checked ? "dark" : "light")
-  }
-
   return (
-    <div className="flex items-center space-x-3">
-      <Sun
-        className={`h-4 w-4 transition-colors duration-300 ${isDark ? "text-muted-foreground" : "text-yellow-500"}`}
-      />
+    <div className="flex items-center space-x-2">
+      <Sun className="h-4 w-4 text-yellow-500" />
       <Switch
         checked={isDark}
-        onCheckedChange={handleToggle}
-        className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-yellow-100"
+        onCheckedChange={(checked) => {
+          setTheme(checked ? "dark" : "light")
+        }}
+        aria-label="Toggle dark mode"
       />
-      <Moon
-        className={`h-4 w-4 transition-colors duration-300 ${isDark ? "text-blue-400" : "text-muted-foreground"}`}
-      />
-      <Label className="sr-only">Toggle dark mode</Label>
+      <Moon className="h-4 w-4 text-blue-500" />
+      <Label htmlFor="theme-switch" className="sr-only">
+        Toggle between light and dark mode
+      </Label>
     </div>
   )
 }
