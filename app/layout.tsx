@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer"
 import { cookies } from "next/headers"
 import { SidebarStateIndicator } from "@/components/sidebar-state-indicator"
 import { Toaster } from "sonner"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,20 +28,22 @@ export default async function RootLayout({
   const defaultOpen = cookieStore.get("sidebar:state")?.value === "true"
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <SidebarProvider defaultOpen={defaultOpen}>
-          <div className="flex min-h-screen w-full">
-            <AppSidebar />
-            <div className="flex flex-1 flex-col transition-all duration-300 ease-in-out">
-              <Header />
-              <main className="flex-1 p-6 transition-all duration-300 ease-in-out">{children}</main>
-              <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <div className="flex min-h-screen w-full">
+              <AppSidebar />
+              <div className="flex flex-1 flex-col transition-all duration-300 ease-in-out">
+                <Header />
+                <main className="flex-1 p-6 transition-all duration-300 ease-in-out">{children}</main>
+                <Footer />
+              </div>
+              <SidebarStateIndicator />
             </div>
-            <SidebarStateIndicator />
-          </div>
-          <Toaster position="top-right" richColors />
-        </SidebarProvider>
+            <Toaster position="top-right" richColors theme="system" />
+          </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

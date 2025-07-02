@@ -4,6 +4,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Separator } from "@/components/ui/separator"
+import { ThemeSwitch } from "@/components/theme-switch"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Palette, Monitor, Smartphone } from "lucide-react"
 
 export default function Settings() {
   return (
@@ -14,6 +17,55 @@ export default function Settings() {
       </div>
 
       <div className="grid gap-6">
+        {/* Theme Settings */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Palette className="h-5 w-5" />
+              Theme Settings
+            </CardTitle>
+            <CardDescription>Customize the appearance of your application</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <Label className="text-base">Theme Mode</Label>
+                <p className="text-sm text-muted-foreground">Choose between light and dark mode</p>
+              </div>
+              <ThemeSwitch />
+            </div>
+            <Separator />
+            <div className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <Label className="text-base">Advanced Theme Options</Label>
+                <p className="text-sm text-muted-foreground">Access system theme and more options</p>
+              </div>
+              <ThemeToggle />
+            </div>
+            <Separator />
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium flex items-center gap-2">
+                  <Monitor className="h-4 w-4" />
+                  Desktop Experience
+                </Label>
+                <p className="text-xs text-muted-foreground">
+                  Theme automatically adapts to your system preferences when set to "System"
+                </p>
+              </div>
+              <div className="space-y-2">
+                <Label className="text-sm font-medium flex items-center gap-2">
+                  <Smartphone className="h-4 w-4" />
+                  Mobile Experience
+                </Label>
+                <p className="text-xs text-muted-foreground">
+                  Optimized theme switching for mobile devices with smooth transitions
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader>
             <CardTitle>Profile Settings</CardTitle>
@@ -48,18 +100,18 @@ export default function Settings() {
             <Separator />
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Dark Mode</Label>
-                <p className="text-sm text-muted-foreground">Toggle dark mode theme</p>
-              </div>
-              <Switch />
-            </div>
-            <Separator />
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
                 <Label>Auto-save</Label>
                 <p className="text-sm text-muted-foreground">Automatically save your work</p>
               </div>
               <Switch defaultChecked />
+            </div>
+            <Separator />
+            <div className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <Label>Reduced Motion</Label>
+                <p className="text-sm text-muted-foreground">Minimize animations and transitions</p>
+              </div>
+              <Switch />
             </div>
           </CardContent>
         </Card>

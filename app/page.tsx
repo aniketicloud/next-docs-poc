@@ -255,7 +255,7 @@ export default function Dashboard() {
               )}
 
               {/* Submit Button */}
-              <Button type="submit" className="w-full" disabled={!formType || isSubmitting}>
+              <Button type="submit" className="w-full theme-transition" disabled={!formType || isSubmitting}>
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -274,7 +274,7 @@ export default function Dashboard() {
 
         {/* Quick Stats */}
         <div className="space-y-4">
-          <Card className="hover:shadow-lg transition-shadow duration-200">
+          <Card className="hover:shadow-lg transition-all duration-200 hover:scale-[1.02] theme-transition border-l-4 border-l-primary/20">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg">Quick Actions</CardTitle>
             </CardHeader>
@@ -330,7 +330,7 @@ export default function Dashboard() {
           isCollapsed ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-3"
         }`}
       >
-        <Card className="hover:shadow-lg transition-shadow duration-200">
+        <Card className="hover:shadow-lg transition-all duration-200 hover:scale-[1.02] theme-transition">
           <CardHeader>
             <CardTitle>Active Projects</CardTitle>
             <CardDescription>Currently running projects</CardDescription>
@@ -341,7 +341,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card className="hover:shadow-lg transition-shadow duration-200">
+        <Card className="hover:shadow-lg transition-all duration-200 hover:scale-[1.02] theme-transition">
           <CardHeader>
             <CardTitle>Pending Tasks</CardTitle>
             <CardDescription>Tasks awaiting completion</CardDescription>
@@ -352,7 +352,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card className="hover:shadow-lg transition-shadow duration-200">
+        <Card className="hover:shadow-lg transition-all duration-200 hover:scale-[1.02] theme-transition">
           <CardHeader>
             <CardTitle>Team Members</CardTitle>
             <CardDescription>Active team members</CardDescription>
@@ -364,7 +364,7 @@ export default function Dashboard() {
         </Card>
 
         {isCollapsed && (
-          <Card className="hover:shadow-lg transition-shadow duration-200">
+          <Card className="hover:shadow-lg transition-all duration-200 hover:scale-[1.02] theme-transition">
             <CardHeader>
               <CardTitle>Completion Rate</CardTitle>
               <CardDescription>Project success rate</CardDescription>

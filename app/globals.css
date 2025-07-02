@@ -84,11 +84,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
   }
 }
 
-/* Enhanced sidebar animations */
+/* Enhanced sidebar animations with theme support */
 @layer components {
   .sidebar-transition {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -136,5 +136,43 @@
     50% {
       opacity: 0.7;
     }
+  }
+
+  /* Theme transition animations */
+  .theme-transition {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Custom scrollbar for dark mode */
+  .dark ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: 4px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent-foreground));
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-transition,
+  .sidebar-content-transition,
+  .main-content-transition,
+  .sidebar-item-hover,
+  .theme-transition {
+    transition: none !important;
+  }
+
+  .toggle-pulse {
+    animation: none !important;
   }
 }
