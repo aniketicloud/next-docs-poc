@@ -8,13 +8,14 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { cookies } from "next/headers"
 import { SidebarStateIndicator } from "@/components/sidebar-state-indicator"
+import { Toaster } from "sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Next.js Sidebar App",
   description: "A modern Next.js application with collapsible sidebar navigation",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default async function RootLayout({
@@ -38,6 +39,7 @@ export default async function RootLayout({
             </div>
             <SidebarStateIndicator />
           </div>
+          <Toaster position="top-right" richColors />
         </SidebarProvider>
       </body>
     </html>

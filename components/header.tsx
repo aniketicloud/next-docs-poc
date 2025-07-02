@@ -1,12 +1,11 @@
-import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
+"use client"
+
+import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Bell, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 export function Header() {
-  const { state } = useSidebar()
-  const isCollapsed = state === "collapsed"
-
   return (
     <header className="flex h-16 items-center justify-between border-b bg-background px-6 main-content-transition">
       <div className="flex items-center gap-4">
