@@ -41,7 +41,7 @@ export default async function RootLayout({
               </div>
               <SidebarStateIndicator />
             </div>
-            <Toaster position="top-right" richColors theme="system" />
+            <Toaster position="top-right" richColors />
           </SidebarProvider>
         </ThemeProvider>
       </body>
